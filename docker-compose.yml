@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres_container
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ""
+      POSTGRES_DB: ecommerce_db
+      POSTGRES_HOST_AUTH_METHOD: trust
+      TZ: America/Recife
+      PGTZ: America/Recife
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    networks:
+      - ecommerce-net
+
+  backend:
+    build: ./backend
+    container_name: backend_container
+    restart: always
+    depends_on:
+      - postgres
+    env_file:
+      - ./backend/.env
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgres://postgres:@postgres:5432/ecommerce_db
+    ports:
+      - "5000:5000"
+    networks:
+      - ecommerce-net
+
+  frontend:
+    build: ./frontend
+    container_name: frontend_container
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+    environment:
+      REACT_APP_BASE_URL:  http://host.docker.internal:5000
+    networks:
+    - ecommerce-net
+
+networks:
+  ecommerce-net:
+    driver: bridge

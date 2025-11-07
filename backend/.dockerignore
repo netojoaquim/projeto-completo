@@ -1,0 +1,17 @@
+# Ignorar dependências e builds locais
+node_modules
+dist
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+npm-debug.log
+yarn-error.log
+
+# Se você tiver testes
+test
+coverage
+
+# Evitar enviar configs locais
+scripts/
+backup.sql
