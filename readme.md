@@ -4,14 +4,14 @@ Este é um projeto de e-commerce com **frontend em React**, **backend em NestJs*
 
 ---
 
-## 🐋 Pré-requisitos
+## Pré-requisitos
 
 * Docker
 * Docker Compose
 
 ---
 
-## 🚀 Como executar
+## Como executar
 
 1.  **Clone o repositório:**
     ```bash
@@ -60,14 +60,14 @@ Este é um projeto de e-commerce com **frontend em React**, **backend em NestJs*
 
 ---
 
-### ઍ Acessando o projeto
+### Acessando o projeto
 
 * **Frontend:** `http://localhost:3000`
 * **Backend (Swagger):** `http://localhost:5000/api-docs`
 
 ---
 
-### 🛑 Parar os containers
+### Parar os containers
 
 ```bash
 docker-compose down
